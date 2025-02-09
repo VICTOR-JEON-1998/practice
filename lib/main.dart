@@ -19,7 +19,7 @@ class _App extends StatelessWidget {
         fontFamily: 'NotoSans',
       ),
       debugShowCheckedModeBanner: false,
-      home: LoginScreen(),
+      home: LoginScreen(), // 보통 초기 화면을 넣어줌.
     );
   }
 }
