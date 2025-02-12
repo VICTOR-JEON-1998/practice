@@ -10,33 +10,42 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultLayout(
-    child : SafeArea(
-      top: true,
-      bottom: false,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch, // 글자 붙게 만
-        children: [
-          _Title(),
-          _SubTitle(),
-          Image.asset(
-            'asset/img/misc/logo.png',
-            width: MediaQuery.of(context).size.width / 3*2,
-          ),
-          CustomTextFormField(
-            hintText: "이메일을 입력하하세요",
-            onChanged: (String value) {  },
-          ),
-          CustomTextFormField(
-            hintText: "비밀번호를 입력하세요",
-            obscureText: true,
-            onChanged: (String value) {  },
-          ),
-          ElevatedButton(onPressed: (){},
+    child : SingleChildScrollView( // scroll 가능하게 만들어줌.
+      keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag, // 다른 화면 드래그하면 키보드사라짐
+      child: SafeArea(
+        top: true,
+        bottom: false,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: Column( // alt + enter 눌러주면 warp !
+            crossAxisAlignment: CrossAxisAlignment.stretch, // 글자 붙게 만
+            children: [
+              _Title(),
+              const SizedBox(height: 16.0), // 위 아래 간격 벌려주기
+              _SubTitle(),
+              Image.asset(
+                'asset/img/misc/logo.png',
+                width: MediaQuery.of(context).size.width / 3*2,
+              ),
+              CustomTextFormField(
+                hintText: "이메일을 입력하세요",
+                onChanged: (String value) {  },
+              ),
+              const SizedBox(height: 16.0),
+              CustomTextFormField(
+                hintText: "비밀번호를 입력하세요",
+                obscureText: true,
+                onChanged: (String value) {  },
+              ),
+              const SizedBox(height: 16.0),
+              ElevatedButton(onPressed: (){},
 
-              child: Text('로그인')), // 현재 기능에서의 버
-          TextButton(onPressed: (){}, child: Text('회원가입'))
-        ],
-      ),),
+                  child: Text('로그인')), // 현재 기능에서의 버
+              TextButton(onPressed: (){}, child: Text('회원가입'))
+            ],
+          ),
+        ),),
+    ),
     );
   }
 }
